@@ -638,6 +638,11 @@ Modifications copyright (c) 2018-2019 Nokia
         </dependencies>
         <configuration>
           <printSummary>false</printSummary>
+          <!-- TEMPORARY - removed in the Mockito 5 milestone.
+               JDK 17+ strong encapsulation: javassist (JMapper) needs java.lang, and the
+               reflection based test helpers need java.util.regex, java.math, etc.
+               ${surefireArgLine} carries the JaCoCo agent and must be kept. -->
+          <argLine>${surefireArgLine} --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.util.regex=ALL-UNNAMED --add-opens java.base/java.math=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED --add-opens java.base/java.net=ALL-UNNAMED --add-opens java.base/java.text=ALL-UNNAMED --add-opens java.base/java.util.concurrent=ALL-UNNAMED --add-opens java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/java.time=ALL-UNNAMED</argLine>
           <systemPropertyVariables>
             <jacoco-agent.destfile>${project.build.directory}/jacoco.exec
             </jacoco-agent.destfile>
