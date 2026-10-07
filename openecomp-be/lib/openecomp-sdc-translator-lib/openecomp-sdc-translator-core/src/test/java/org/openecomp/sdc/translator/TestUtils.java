@@ -697,9 +697,11 @@ public class TestUtils {
       name = entry.getName()
               .substring(entry.getName().lastIndexOf(File.separator) + 1);
       if (expectedResultFileNameSet.contains(name)) {
-        expected = sanitize(new String(expectedResultMap.get(name)));
-        actual = sanitize(new String(FileUtils.toByteArray(zis)));
-        assertEquals("difference in file: " + name, expected, actual);
+        String expectedRaw = new String(expectedResultMap.get(name));
+        String actualRaw = new String(FileUtils.toByteArray(zis));
+        expected = sanitize(expectedRaw);
+        actual = sanitize(actualRaw);
+        assertYamlEquals("difference in file: " + name, expected, actual, expectedRaw, actualRaw);
 
         expectedResultFileNameSet.remove(name);
       }
@@ -707,6 +709,31 @@ public class TestUtils {
     if (expectedResultFileNameSet.isEmpty()) {
       expectedResultFileNameSet.forEach(System.out::println);
     }
+  }
+
+  /**
+   * Compares two YAML documents. Since JDK 19 the copy constructor of HashMap sizes its table differently, which changes the iteration order of
+   * the (unordered) maps that are serialized to YAML. Map key order is not significant, so when the sanitized texts differ the documents are
+   * compared structurally (parsed from the raw text, lists stay order sensitive).
+   */
+  private static void assertYamlEquals(String message, String expected, String actual, String expectedRaw, String actualRaw) {
+    if (expected.equals(actual)) {
+      return;
+    }
+    Object expectedYaml;
+    Object actualYaml;
+    try {
+      expectedYaml = new org.yaml.snakeyaml.Yaml().load(expectedRaw);
+      actualYaml = new org.yaml.snakeyaml.Yaml().load(actualRaw);
+    } catch (RuntimeException e) {
+      assertEquals(message, expected, actual);
+      return;
+    }
+    if (expectedYaml == null || actualYaml == null) {
+      assertEquals(message, expected, actual);
+      return;
+    }
+    assertEquals(message, expectedYaml, actualYaml);
   }
 
   private static String sanitize(String s) {
