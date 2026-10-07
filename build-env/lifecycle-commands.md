@@ -197,6 +197,21 @@ mvn test
 curl -s -u <user>:<pass> http://localhost:6969/policy/api/v1/healthcheck
 ```
 
+### Build smoke on JDK 21 (so, aai-resources, aai-traversal, policy-api)
+
+`mvn -B -ntp -DskipTests clean install` under `source build-env/bootstrap-java21.sh` succeeds in all
+four repos (so ~2 min, the others < 1 min).
+
+* Use `clean` when `target/` holds an earlier test run: aai-resources / aai-traversal otherwise fail
+  `jacoco:check` on a stale `jacoco-ut.exec` that does not match the freshly compiled classes
+  (not a JDK 21 problem).
+* Class-file levels today: aai-* 61 (release 17), policy-api 65 (release 21, forced by its parent),
+  so 55 (effective `<release>11</release>` inherited from oparent 3.0.2, despite `java.version` 17)
+  and 59 for the two groovy-eclipse BPMN modules (`MSOCommonBPMN`,
+  `so-bpmn-infrastructure-common`, groovy-eclipse is capped at Java 15). These are pre-existing;
+  the release bump belongs to each repo's own milestone.
+* so emits ~2000 non-fatal warnings (checkstyle, enforcer upper-bound dependencies, hk2 paths).
+
 ## 5. oom / integration (no Java build)
 
 * `oom`: `helm lint` / `helm template` on the modified charts (`oom/kubernetes/...`); chart build
