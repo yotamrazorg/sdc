@@ -7,14 +7,19 @@
     <servlet>
         <servlet-name>jersey</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-        <init-param>
-            <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>org.openecomp.sdc.fe.servlets</param-value>
-        </init-param>
-
+        <!-- Resources are registered explicitly instead of via jersey.config.server.provider.packages:
+             Jersey 2.34 package scanning uses a repackaged ASM that cannot read Java 21 class files
+             (major version 65) and fails the whole servlet with "Unsupported class file major version 65".
+             Keep this list in sync with the @Path/@Provider classes of org.openecomp.sdc.fe.servlets. -->
         <init-param>
             <param-name>jersey.config.server.provider.classnames</param-name>
-            <param-value>org.glassfish.jersey.media.multipart.MultiPartFeature</param-value>
+            <param-value>
+                org.glassfish.jersey.media.multipart.MultiPartFeature,
+                org.openecomp.sdc.fe.servlets.ConfigMgrServlet,
+                org.openecomp.sdc.fe.servlets.ConfigServlet,
+                org.openecomp.sdc.fe.servlets.FeHealthCheckServlet,
+                org.openecomp.sdc.fe.servlets.PortalServlet
+            </param-value>
         </init-param>
         <init-param>
             <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>

@@ -90,6 +90,64 @@ Run / healthcheck of `catalog-fe` (no Cassandra/JanusGraph dependency):
 * JVM version check: `docker exec <container> java -version` (must report 21 after the image
   base move to `eclipse-temurin:21-jre-alpine`).
 
+### catalog-fe on JDK 21 - container check and the Docker-free smoke
+
+`catalog-fe/sdc-frontend/Dockerfile` is based on `eclipse-temurin:21-jre-alpine`. Neither the
+Dockerfile, `startup.sh`, `artifacts/scripts/*`, `startdConfig/*` nor `fe_etc/*` pass any JVM flag that
+was removed after JDK 11 (no CMS/PermSize/endorsed dirs/`--illegal-access`); the docker-maven-plugin
+profile (`-Pdocker`) only copies the wars and builds `sdc-frontend/` - it names no Java image or version.
+The interim Jetty stays `jetty-distribution` 9.4.58 (smoke target until the Jetty 12 milestone).
+
+**Docker is not available in the sandbox**, so the image itself can not be built or run there. When
+Docker exists, the image check is:
+
+```bash
+mvn -f catalog-fe/pom.xml -Pdocker install                 # builds onap/sdc-frontend (needs the onboarding-fe war, see above)
+docker run -d --name sdc-fe -p 8181:8181 onap/sdc-frontend
+curl -s -o /dev/null -w '%{http_code}\n' http://localhost:8181/sdc1/rest/healthCheck   # 200 (BE up) or 500+JSON (stand-alone)
+docker exec sdc-fe java -version                           # must report 21.x
+```
+
+**Docker-free smoke** (`build-env/smoke-catalog-fe-jdk21.sh`, re-runnable, ~20 s once the war exists):
+
+```bash
+build-env/smoke-catalog-fe-jdk21.sh        # exit 0 = PASS; always stops Jetty + the stand-in BE
+```
+
+It sources the bootstrap, builds the war only when `catalog-fe/target/catalog-fe-<ver>.war` is missing
+(`SMOKE_BUILD=1` forces it; log in `$SMOKE_CACHE/logs`), downloads `jetty-distribution`
+(version read from the root pom, SHA-1 verified) into `${SMOKE_CACHE:-$HOME/.cache/onap-smoke}` (outside
+the repo), creates a fresh `JETTY_BASE` with the same `start.jar` commands and file layout as the
+Dockerfile (`deploy`, `http`, `https`, `rewrite`; `setuid` is skipped - it needs the container's `onap`
+user), deploys the `catalog-fe` and `onboarding-fe` wars and starts Jetty through the real
+`startup.sh` (JDK 21 from the bootstrap). Deviations from the image, all smoke-only: free ports instead of
+fixed 8181/9443, `-Xmx512m`, `-Djetty.base` (the image runs with base == home), and the run-dir copy of
+`configuration.yaml` has `systemMonitoring.enabled=true`, probe interval 3 s and BE/onboarding hosts
+pointing to `127.0.0.1`. A python listener plays SDC-BE (404 on `/sdc2/rest/healthCheck`, records POSTs
+to `/sdc2/rest/monitoring`). Checks (non-zero exit on any failure):
+
+1. `GET /sdc1/rest/healthCheck` answers 200/500 with a JSON body (stand-alone: `500`, BE DOWN, FE UP;
+   afterwards the stand-in BE is switched to "healthy" and the endpoint is shown answering `200`, which is
+   informational unless `SMOKE_REQUIRE_200=1`);
+2. JVM is 21: `jcmd <pid> VM.version`, `/proc/<pid>/exe` under the bootstrap `JAVA_HOME`, Jetty's own log
+   line `jetty-9.4.58...; jvm 21.0.12.1+1-LTS`;
+3. the `MonitoringEvent` posted by `FeMonitoringService` has `hostcpu` 0..100, `hostmem` (0,100], a
+   `hostdisk` mount map, `jvmcpu` > 0 and increasing, `jvmmem` > 0, `jvmtnum` > 0; neither the war nor
+   the logs mention sigar; the console log has no `UnsatisfiedLinkError`/`Unrecognized VM option`/etc.
+
+Knobs: `SMOKE_CACHE`, `SMOKE_HTTP_PORT`, `SMOKE_HTTPS_PORT`, `SMOKE_BE_PORT`, `SMOKE_BUILD`,
+`SMOKE_TIMEOUT`, `SMOKE_REQUIRE_200`, `SMOKE_KEEP=1` (keep `<cache>/run` with the Jetty logs; always kept
+on failure).
+
+Not verifiable without Docker: that the image builds (`apk add curl jq`, jetty/otel downloads inside the
+image), the alpine/musl runtime, the `onap` user + `setuid` module, and container-aware (cgroup) CPU/memory
+values.
+
+Known JDK 21 product fix: Jersey 2.34 `provider.packages` scanning cannot read Java 21 class files
+(`Unsupported class file major version 65`), so `catalog-fe`'s `web.xml` registers its resource classes
+explicitly via `jersey.config.server.provider.classnames`. `catalog-be`'s `web.xml` still uses package
+scanning and needs the same treatment before it can start on JDK 21.
+
 ## 2. so
 
 ```bash
