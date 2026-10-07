@@ -20,6 +20,8 @@
 
 package org.openecomp.sdc.vendorsoftwareproduct.dao.type;
 
+import com.google.code.beanmatchers.BeanMatchers;
+import java.nio.ByteBuffer;
 import org.junit.Test;
 
 import static com.google.code.beanmatchers.BeanMatchers.hasValidGettersAndSetters;
@@ -28,6 +30,8 @@ import static org.junit.Assert.assertThat;
 public class PackageInfoTest {
     @Test
     public void accessorsTest() {
+        // ByteBuffer is sealed since JDK 21 and can no longer be mocked, so provide real instances
+        BeanMatchers.registerValueGenerator(() -> ByteBuffer.allocate(1), ByteBuffer.class);
         assertThat(PackageInfo.class,
                 hasValidGettersAndSetters());
     }

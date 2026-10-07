@@ -22,11 +22,15 @@ package org.openecomp.core.tools.store.zusammen.datatypes;
 import static com.google.code.beanmatchers.BeanMatchers.hasValidGettersAndSetters;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import com.google.code.beanmatchers.BeanMatchers;
+import java.nio.ByteBuffer;
 import org.junit.jupiter.api.Test;
 
 public class ElementEntityTest {
     @Test
     public void hasValidGettersAndSettersTest() {
+        // ByteBuffer is sealed since JDK 21 and can no longer be mocked, so provide real instances
+        BeanMatchers.registerValueGenerator(() -> ByteBuffer.allocate(1), ByteBuffer.class);
         assertThat(ElementEntity.class, hasValidGettersAndSetters());
     }
 }
