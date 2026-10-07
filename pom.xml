@@ -122,9 +122,6 @@ Modifications copyright (c) 2018-2019 Nokia
     <jcabi.maven.plugin.version>0.13.2</jcabi.maven.plugin.version>
 
     <!-- Logging end -->
-    <!-- System Metrics -->
-    <sigar.version>1.6.4</sigar.version>
-
     <!--GSON-->
     <gson.version>2.10.1</gson.version>
 
