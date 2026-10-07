@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Maven settings for building the ONAP repositories (sdc, so, aai-resources,
+  aai-traversal, policy-api) from a clean machine.
+
+  * Public repositories only - no credentials, no mirrors, no proxies.
+  * Needed because org.onap.oparent:oparent (3.0.2 / 3.2.0), org.onap.aai.aai-common:*
+    (1.18.0) and the org.onap.policy.parent:* 6.1.0-SNAPSHOT parents are NOT published
+    to Maven Central; they live on the public ONAP Nexus.
+  * Loaded via MAVEN_ARGS="-s <this file>" by bootstrap-java21.sh. Pass
+    MCODE_MAVEN_SETTINGS=none to the bootstrap to disable.
+-->
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <profiles>
+    <!-- Properties required by the oparent enforcer rule ("You must set a onap.nexus.url
+         property in your settings.xml"); values taken from oparent/settings.xml. -->
+    <profile>
+      <id>onap-settings</id>
+      <properties>
+        <onap.nexus.url>https://nexus.onap.org</onap.nexus.url>
+        <onap.nexus.rawrepo.baseurl.upload>https://nexus.onap.org/content/sites/raw</onap.nexus.rawrepo.baseurl.upload>
+        <onap.nexus.rawrepo.baseurl.download>https://nexus.onap.org/service/local/repositories/raw/content</onap.nexus.rawrepo.baseurl.download>
+        <onap.nexus.rawrepo.serverid>ecomp-raw</onap.nexus.rawrepo.serverid>
+        <onap.nexus.dockerregistry.daily>nexus3.onap.org:10003</onap.nexus.dockerregistry.daily>
+        <onap.nexus.dockerregistry.release>nexus3.onap.org:10002</onap.nexus.dockerregistry.release>
+        <docker.pull.registry>nexus3.onap.org:10001</docker.pull.registry>
+        <docker.push.registry>nexus3.onap.org:10003</docker.push.registry>
+      </properties>
+    </profile>
+    <profile>
+      <id>onap-public-repositories</id>
+      <repositories>
+        <repository>
+          <id>onap-public</id>
+          <url>https://nexus.onap.org/content/repositories/public/</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+        <repository>
+          <id>onap-releases</id>
+          <url>https://nexus.onap.org/content/repositories/releases/</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+        <repository>
+          <id>onap-snapshots</id>
+          <url>https://nexus.onap.org/content/repositories/snapshots/</url>
+          <releases><enabled>false</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>onap-public</id>
+          <url>https://nexus.onap.org/content/repositories/public/</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>false</enabled></snapshots>
+        </pluginRepository>
+        <pluginRepository>
+          <id>onap-snapshots</id>
+          <url>https://nexus.onap.org/content/repositories/snapshots/</url>
+          <releases><enabled>false</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>onap-settings</activeProfile>
+    <activeProfile>onap-public-repositories</activeProfile>
+  </activeProfiles>
+</settings>

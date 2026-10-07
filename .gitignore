@@ -201,3 +201,12 @@ output*
 .playwright-mcp
 .claude
 docs/superpowers
+
+# Python tooling (build-env helpers, tests)
+#------------------------------------------------------------
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
