@@ -478,6 +478,11 @@
                         <version>${aspectj.version}</version>
                     </dependency>
                 </dependencies>
+                <configuration>
+                    <!-- jcabi defaults to 1.6, which AspectJ 1.9.22+ no longer accepts -->
+                    <source>${maven.compiler.release}</source>
+                    <target>${maven.compiler.release}</target>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>

@@ -39,6 +39,7 @@ Modifications copyright (c) 2018-2019 Nokia
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>21</maven.compiler.release>
     <maven.build.timestamp.format>yyyyMMdd'T'HHmmss'Z'</maven.build.timestamp.format>
 
     <tosca.datatype.version>${project.version}</tosca.datatype.version>
@@ -63,7 +64,7 @@ Modifications copyright (c) 2018-2019 Nokia
     <ecomp.version>3.4.0</ecomp.version>
     <cassandra.unit.version>4.3.1.0</cassandra.unit.version>
     <cadi.version>2.1.21</cadi.version>
-    <lombok.version>1.18.24</lombok.version>
+    <lombok.version>1.18.36</lombok.version>
     <commons-beanutils>1.9.4</commons-beanutils>
     <commons.io.version>2.13.0</commons.io.version>
     <commons-configuration>2.8.0</commons-configuration>
@@ -116,7 +117,7 @@ Modifications copyright (c) 2018-2019 Nokia
 
     <!-- aspects -->
     <jcabi.version>0.21.1</jcabi.version>
-    <aspectj.version>1.9.19</aspectj.version>
+    <aspectj.version>1.9.24</aspectj.version>
     <aspectjrt.version>${aspectj.version}</aspectjrt.version>
     <jcabi.maven.plugin.version>0.13.2</jcabi.maven.plugin.version>
 
@@ -173,7 +174,7 @@ Modifications copyright (c) 2018-2019 Nokia
     <!--sdc-security-utils-->
     <security.util.lib.version>1.9.0</security.util.lib.version>
     <!--jacoco-->
-    <jacoco.version>0.8.7</jacoco.version>
+    <jacoco.version>0.8.13</jacoco.version>
 
     <java.driver.core.version>4.14.1</java.driver.core.version>
 
@@ -514,7 +515,7 @@ Modifications copyright (c) 2018-2019 Nokia
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.1</version>
+          <version>3.13.0</version>
         </plugin>
         <plugin>
           <groupId>com.github.sylvainlaurent.maven</groupId>
@@ -609,8 +610,7 @@ Modifications copyright (c) 2018-2019 Nokia
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>11</source>
-          <target>11</target>
+          <release>${maven.compiler.release}</release>
           <forceJavacCompilerUse>true</forceJavacCompilerUse>
         </configuration>
       </plugin>
