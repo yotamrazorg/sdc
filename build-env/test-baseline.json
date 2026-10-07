@@ -1,0 +1,1917 @@
+{
+  "description": "Pre-modernization unit-test baseline (JDK 17). Per-module surefire/failsafe counts parsed from target/*-reports/TEST-*.xml. Compare with compare_baseline.py.",
+  "repos": {
+    "aai-resources": {
+      "build_exit_codes": [
+        0
+      ],
+      "commands": [
+        "mvn -B -ntp -fae -Dmaven.test.failure.ignore=true -Dstyle.color=never -Dsurefire.timeout=2400 clean install"
+      ],
+      "jdk": {
+        "select": "17",
+        "version": "17.0.20.1"
+      },
+      "maven": "3.9.11",
+      "modules": {
+        ".": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 0,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 0,
+          "tests": 0
+        },
+        "aai-resources": {
+          "errors": 1,
+          "failed_tests": [
+            "org.onap.aai.it.performance.K6ReadTest#readWithoutRelationsTest"
+          ],
+          "failures": 0,
+          "passed": 153,
+          "skipped": 2,
+          "skipped_tests": [
+            "org.onap.aai.it.performance.K6ReadTest#writeWithoutRelations",
+            "org.onap.aai.it.performance.K6WriteTest#writeWithoutRelations"
+          ],
+          "suites": 36,
+          "tests": 156
+        }
+      },
+      "notes": [
+        "Single-module build (aai-resources) on JDK 17.0.20.1, parent org.onap.aai.aai-common:aai-parent:1.18.0 from the ONAP Nexus. The one error (K6ReadTest.readWithoutRelationsTest) needs a Docker daemon (\"Could not find a valid Docker environment\") and fails in the sandbox before any code change; the 2 skipped tests are @Ignore/@Disabled in the sources."
+      ],
+      "reactor": {
+        "failed_modules": [],
+        "skipped_modules": [],
+        "success_modules": 2
+      },
+      "status": "ok",
+      "totals": {
+        "errors": 1,
+        "failures": 0,
+        "modules_with_tests": 1,
+        "passed": 153,
+        "skipped": 2,
+        "tests": 156
+      }
+    },
+    "aai-traversal": {
+      "build_exit_codes": [
+        0
+      ],
+      "commands": [
+        "mvn -B -ntp -fae -Dmaven.test.failure.ignore=true -Dstyle.color=never -Dsurefire.timeout=2400 clean install"
+      ],
+      "jdk": {
+        "select": "17",
+        "version": "17.0.20.1"
+      },
+      "maven": "3.9.11",
+      "modules": {
+        ".": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 0,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 0,
+          "tests": 0
+        },
+        "aai-traversal": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 966,
+          "skipped": 96,
+          "skipped_tests": [
+            "org.onap.aai.rest.dsl.DslQueryProcessorV1Test#hasPropertyIntegerTest",
+            "org.onap.aai.rest.dsl.DslQueryProcessorV2Test#hasPropertyIntegerTest",
+            "org.onap.aai.rest.dsl.DslQueryProcessorV2Test#returnSpecificPropsAndAllForDifferentVertices",
+            "org.onap.aai.rest.dsl.ProdDslTest#msoQueryTest1",
+            "org.onap.aai.rest.history.CQAllChildernFromPnfStateTest#pnfChildrenQueryTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleEdgeTest#lifecycleQueryStartTsAfterLastEdgeActionTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleEdgeTest#lifecycleQueryStartTsAfterSecondEdgeDeletionTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleEdgeTest#lifecycleQueryStartTsAtLastEdgeActionTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleEdgeTest#lifecycleQueryStartTsAtSecondEdgeDeletionTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleEdgeTest#lifecycleQueryStartTsBeforeCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleEdgeTest#lifecycleQueryStartTsBeforeSecondEdgeCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryNoStartOrEndTsTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsAfterCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsAfterEquipTypeFirstDeleteOnSecondPsTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsAfterEquipTypeRecreateOnSecondPsTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsAfterEquipTypeSecondDeleteOnSecondPsTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsAfterEquipTypeUpdateOnSecondPsTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsAfterFirstDeleteTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsAfterFirstUpdateTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsAfterSecondCreateTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsAtCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsAtEquipTypeFirstDeleteOnSecondPsTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsAtEquipTypeRecreateOnSecondPsTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsAtEquipTypeUpdateOnSecondPsTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsAtFirstDeleteTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsAtFirstUpdateTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsAtSecondCreateTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsBeforeCreationEndTimeAfterEquipTypeSecondDeleteOnSecondPsTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsBeforeCreationEndTimeAtEquipTypeSecondDeleteOnSecondPsTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsBeforeCreationEndTimeBeforeEquipTypeSecondDeleteOnSecondPsTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsBeforeCreationEndTimeBeforeSecondPsCreateTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsBeforeCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#lifecycleQueryStartTsOnEquipTypeSecondDeleteOnSecondPsTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleNodeDeletedThenRecreatedTest#verifyNodeActionsWithNoTimeRangeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleSingleNodeTest#lifecycleQueryNoStartOrEndTsTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleSingleNodeTest#lifecycleQueryStartTsAfterCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleSingleNodeTest#lifecycleQueryStartTsAfterDeleteTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleSingleNodeTest#lifecycleQueryStartTsAfterUpdateTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleSingleNodeTest#lifecycleQueryStartTsAtCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleSingleNodeTest#lifecycleQueryStartTsAtDeleteTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleSingleNodeTest#lifecycleQueryStartTsAtUpdateTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryLifecycleSingleNodeTest#lifecycleQueryStartTsBeforeCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateEdgeTest#stateQueryStartTsAfterLastEdgeActionTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateEdgeTest#stateQueryStartTsAfterSecondEdgeCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateEdgeTest#stateQueryStartTsAfterSecondEdgeDeletionTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateEdgeTest#stateQueryStartTsAtLastEdgeActionTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateEdgeTest#stateQueryStartTsAtSecondEdgeDeletionTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateEdgeTest#stateQueryStartTsBeforeCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateEdgeTest#stateQueryStartTsBeforeSecondEdgeCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryAfterCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryAfterCreationTimeWithEndTsTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryAfterDeletionTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryAfterDeletionTimeWithEndTsTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryAfterSecondCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryAfterUpdateAfterSecondCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryAfterUpdateTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryAfterUpdateTimeWithEndTsTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryAtCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryAtCreationTimeWithEndTsTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryAtDeletionTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryAtDeletionTimeWithEndTsTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryAtSecondCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryAtUpdateAfterSecondCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryAtUpdateTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryAtUpdateTimeWithEndTsTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryBeforeCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryBeforeCreationWithEndTsTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryBeforeSecondCreationTimeTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryNoTimestampTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryNoTimestampWithEquipTypeFilterTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryTimestampAfterFirstCreateWithEquipTypeFilterTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryTimestampAfterFirstDeleteWithEquipTypeFilterTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryTimestampAfterFirstUpdateWithEquipTypeFilterTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryTimestampAfterSecondCreateWithEquipTypeFilterTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryTimestampAfterSecondUpdateWithEquipTypeFilterTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryTimestampAtFirstCreateWithEquipTypeFilterTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryTimestampAtFirstDeleteWithEquipTypeFilterTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryTimestampAtFirstUpdateWithEquipTypeFilterTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryTimestampAtSecondCreateWithEquipTypeFilterTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryTimestampAtSecondUpdateWithEquipTypeFilterTest",
+            "org.onap.aai.rest.history.DslConsumerHistoryStateTest#stateQueryTimestampBeforeFirstCreateWithEquipTypeFilterTest",
+            "org.onap.aai.rest.search.GetVNFVpnBondingServiceDetailsTest#run[Version.v11]",
+            "org.onap.aai.rest.search.GetVNFVpnBondingServiceDetailsTest#run[Version.v12]",
+            "org.onap.aai.rest.search.GetVNFVpnBondingServiceDetailsTest#run[Version.v13]",
+            "org.onap.aai.rest.search.GetVNFVpnBondingServiceDetailsTest#run[Version.v14]",
+            "org.onap.aai.rest.search.IpsNetworksFromVnfTest#run[Version.v11]",
+            "org.onap.aai.rest.search.IpsNetworksFromVnfTest#run[Version.v12]",
+            "org.onap.aai.rest.search.IpsNetworksFromVnfTest#run[Version.v13]",
+            "org.onap.aai.rest.search.IpsNetworksFromVnfTest#run[Version.v14]",
+            "org.onap.aai.rest.search.ModelAndNamedQueryRestProviderTest#testNamedQueryCallTimeoutThrown",
+            "org.onap.aai.rest.search.SearchProviderTest#testGenericQueryTimeoutThrown",
+            "org.onap.aai.rest.search.SearchProviderTest#testNodesQueryTimeoutThrown",
+            "org.onap.aai.rest.search.VnfTopologyFromServiceInstanceTest#run[Version.v11]",
+            "org.onap.aai.rest.search.VnfTopologyFromServiceInstanceTest#run[Version.v12]",
+            "org.onap.aai.rest.search.VnfTopologyFromServiceInstanceTest#run[Version.v13]",
+            "org.onap.aai.rest.search.VnfTopologyFromServiceInstanceTest#run[Version.v14]"
+          ],
+          "suites": 174,
+          "tests": 1062
+        }
+      },
+      "reactor": {
+        "failed_modules": [],
+        "skipped_modules": [],
+        "success_modules": 2
+      },
+      "status": "ok",
+      "totals": {
+        "errors": 0,
+        "failures": 0,
+        "modules_with_tests": 1,
+        "passed": 966,
+        "skipped": 96,
+        "tests": 1062
+      }
+    },
+    "policy-api": {
+      "build_exit_codes": [
+        0
+      ],
+      "commands": [
+        "mvn -B -ntp -fae -Dmaven.test.failure.ignore=true -Dstyle.color=never -Dsurefire.timeout=2400 clean install"
+      ],
+      "jdk": {
+        "select": "21",
+        "version": "21.0.12.1"
+      },
+      "maven": "3.9.11",
+      "modules": {
+        "main": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 111,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 20,
+          "tests": 111
+        }
+      },
+      "notes": [
+        "Not buildable on JDK 17: the parent chain org.onap.policy.parent:integration:6.1.0-SNAPSHOT -> policy-parent:6.1.0-SNAPSHOT (resolved from the ONAP snapshot repository) sets maven.compiler.release=21, so api-main fails with \"release version 21 not supported\". The JDK 17 attempt is kept under prior_attempts.",
+        "Counts below were therefore recorded on JDK 21.0.12.1 (the only JDK that can build this repo); policy-api is already a Java 21 project and its SNAPSHOT parent/dependencies (policy-common 4.1.0-SNAPSHOT, policy-models 5.1.0-SNAPSHOT) are moving targets, so these numbers can drift when upstream republishes."
+      ],
+      "prior_attempts": [
+        {
+          "build_exit_codes": [
+            1
+          ],
+          "commands": [
+            "mvn -B -ntp -fae -Dmaven.test.failure.ignore=true -Dstyle.color=never -Dsurefire.timeout=2400 clean install"
+          ],
+          "jdk": {
+            "select": "17",
+            "version": "17.0.20.1"
+          },
+          "maven": "3.9.11",
+          "reason": "compiler error 'release version 21 not supported': the build requires a newer JDK than the one used (Java release set by the parent POM / dependencies)",
+          "status": "not_buildable"
+        }
+      ],
+      "reactor": {
+        "failed_modules": [],
+        "skipped_modules": [],
+        "success_modules": 7
+      },
+      "status": "ok",
+      "totals": {
+        "errors": 0,
+        "failures": 0,
+        "modules_with_tests": 1,
+        "passed": 111,
+        "skipped": 0,
+        "tests": 111
+      }
+    },
+    "sdc": {
+      "build_exit_codes": [
+        0,
+        0
+      ],
+      "commands": [
+        "mvn -B -ntp -fae -Dmaven.test.failure.ignore=true -Dstyle.color=never -Dsurefire.timeout=2400 -Dsurefire.excludesFile=<log-dir>/sdc-surefire-excludes.txt -Pfast-build-no-ui,!skip-integration-tests -DskipITs=true clean install",
+        "mvn -B -ntp -fae -Dmaven.test.failure.ignore=true -Dstyle.color=never -Dsurefire.timeout=2400 -Dsurefire.excludesFile=<log-dir>/sdc-surefire-excludes.txt -f catalog-fe/pom.xml clean install"
+      ],
+      "environment_exclusions": [
+        {
+          "category": "hangs_in_sandbox",
+          "expected_follow_up": "a later milestone replaces cassandra-unit with Testcontainers; remove this entry when the classes run again",
+          "mechanism": "cassandra-unit: CassandraTestHelper.startServer() -> EmbeddedCassandraServerHelper.startEmbeddedCassandra(80000)",
+          "module": "catalog-dao",
+          "reproduced_on": [
+            "17.0.20.1"
+          ],
+          "symptom": "the surefire fork never finishes: embedded Cassandra blocks forever in CommitLog segment allocation; each class was verified individually (JDK 17.0.20.1, serial) and was killed by -Dsurefire.timeout=90 with 'There was a timeout or other error in the fork' and 0 reports",
+          "test_classes": [
+            "org.openecomp.sdc.be.dao.cassandra.CassandraClientTest",
+            "org.openecomp.sdc.be.dao.cassandra.schema.SdcSchemaBuilderTest",
+            "org.openecomp.sdc.be.dao.cassandra.schema.SdcSchemaUtilsTest"
+          ]
+        }
+      ],
+      "jdk": {
+        "select": "17",
+        "version": "17.0.20.1"
+      },
+      "maven": "3.9.11",
+      "modules": {
+        "asdctool": {
+          "errors": 0,
+          "failed_tests": [
+            "org.openecomp.sdc.asdctool.impl.GraphMLConverterTest#testImportGraph",
+            "org.openecomp.sdc.asdctool.impl.GraphMLConverterTest#testImportJsonGraph"
+          ],
+          "failures": 2,
+          "passed": 217,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 61,
+          "tests": 219
+        },
+        "catalog-be": {
+          "errors": 35,
+          "failed_tests": [
+            "org.openecomp.sdc.be.components.path.ForwardingPathBusinessLogicTest#shouldFailToDeleteForwardingPathSincePathDoesNotExist",
+            "org.openecomp.sdc.be.components.path.ForwardingPathBusinessLogicTest#shouldFailToUpdateForwardingPathSincePathDoesNotExist",
+            "org.openecomp.sdc.be.components.path.ForwardingPathBusinessLogicTest#shouldSucceedCreateAndDeleteForwardingPath",
+            "org.openecomp.sdc.be.components.property.PropertyConstraintsUtilsTest#mergePropertiesConstraintsAdditionPermittedTest",
+            "org.openecomp.sdc.be.components.property.PropertyConstraintsUtilsTest#mergePropertiesConstraintsDeletionNotPermittedTest",
+            "org.openecomp.sdc.be.components.property.PropertyConstraintsUtilsTest#mergePropertiesConstraintsUpdateNotPermittedTest",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testAddExistingExternalRef",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testAddExternalRefForExistingComponentInstance",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testAddExternalRefForNonExistingAssetId",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testAddExternalRefForNonExistingCompInstId",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testAddExternalRefForResource",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testDeleteExternalRefForExistingComponentInstance",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testDeleteExternalRefForNonExistingAssetId",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testDeleteExternalRefForNonExistingRef",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testDeleteExternalRefForUserWhichIsNotCurrentUpdater",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testDeleteExternalRefsForExistingComponentInstanceWithUnauthorizedUser",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testGetExternalRefsForAsset",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testGetExternalRefsForAssetWithMissingEcompHeader",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testGetExternalRefsForExistingComponentInstance",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testGetExternalRefsForNonExistingAsset",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testGetExternalRefsForNonExistingVersion",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testUpdateExternalRefForExistingComponentInstance",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testUpdateExternalRefForNonExistingAssetId",
+            "org.openecomp.sdc.be.externalapi.servlet.ExternalRefsServletTest#testUpdateExternalRefForNonExistingObjectIdOrOldRef",
+            "org.openecomp.sdc.be.servlets.ArchiveEndpointTest#archiveAndGetArchivedResource_SingleResource",
+            "org.openecomp.sdc.be.servlets.ArchiveEndpointTest#archiveAndGetArchivedService_SingleService",
+            "org.openecomp.sdc.be.servlets.ArchiveEndpointTest#archiveWithInvalidUid",
+            "org.openecomp.sdc.be.servlets.ArchiveEndpointTest#archiveWithTester",
+            "org.openecomp.sdc.be.servlets.ArchiveEndpointTest#attemptArchiveCheckedOutService",
+            "org.openecomp.sdc.be.servlets.ArchiveEndpointTest#getArchivedComponents_Empty",
+            "org.openecomp.sdc.be.servlets.ArchiveEndpointTest#restoreWithInvalidUid",
+            "org.openecomp.sdc.be.servlets.ArchiveEndpointTest#testOnArchivedVsps",
+            "org.openecomp.sdc.be.servlets.ArchiveEndpointTest#testOnRestoredVsps",
+            "org.openecomp.sdc.be.tosca.PropertyConvertorTest#testConvertPropertyWithPatternConstraint",
+            "org.openecomp.sdc.be.tosca.utils.ForwardingPathToscaUtilTest#singleElementPath"
+          ],
+          "failures": 0,
+          "passed": 3185,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 409,
+          "tests": 3220
+        },
+        "catalog-be-plugins/etsi-nfv-nsd-csar-plugin": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 38,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 9,
+          "tests": 38
+        },
+        "catalog-dao": {
+          "environment_excluded_classes": [
+            "org.openecomp.sdc.be.dao.cassandra.CassandraClientTest",
+            "org.openecomp.sdc.be.dao.cassandra.schema.SdcSchemaBuilderTest",
+            "org.openecomp.sdc.be.dao.cassandra.schema.SdcSchemaUtilsTest"
+          ],
+          "errors": 32,
+          "failed_tests": [
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testCommit",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testCreateVertex",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetBelongingEdgeByCriteria_1",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetByCriteria",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetByCriteria_1",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetByCriteria_2",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetCatalogVerticies",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetChildrenVertecies_1",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetEdgeProperties",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetGraph",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetParentVertecies_1",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetProperty",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetProperty_1",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetPropertyexception",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetVertexById",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetVertexById_1",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetVertexByLabel",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetVertexByPropertyAndLabel",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetVertexByPropertyAndLabel_1",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testGetVertexProperties",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testRollback",
+            "org.openecomp.sdc.be.dao.janusgraph.JanusGraphDaoTest#testUpdateVertexMetadataPropertiesWithJson",
+            "org.openecomp.sdc.be.resources.JanusGraphGenericDaoTest#testBoolean",
+            "org.openecomp.sdc.be.resources.JanusGraphGenericDaoTest#testCrudNode",
+            "org.openecomp.sdc.be.resources.JanusGraphGenericDaoTest#testDuplicateResultDueToJanusGraphBug",
+            "org.openecomp.sdc.be.resources.JanusGraphGenericDaoTest#testDuplicateResultUSeHasNotQueryDueToJanusGraphBug",
+            "org.openecomp.sdc.be.resources.JanusGraphGenericDaoTest#testGetByCategoryAndAll",
+            "org.openecomp.sdc.be.resources.JanusGraphGenericDaoTest#testGetEdgesForNode",
+            "org.openecomp.sdc.be.resources.JanusGraphGenericDaoTest#testLockElement",
+            "org.openecomp.sdc.be.resources.JanusGraphGenericDaoTest#testReLockElement",
+            "org.openecomp.sdc.be.resources.JanusGraphGenericDaoTest#testStringSearch",
+            "org.openecomp.sdc.be.resources.JanusGraphGenericDaoTest#testcheckEdgeProps"
+          ],
+          "failures": 0,
+          "passed": 1144,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 116,
+          "tests": 1176
+        },
+        "catalog-fe": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 80,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 18,
+          "tests": 80
+        },
+        "catalog-model": {
+          "errors": 156,
+          "failed_tests": [
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ArchiveOperationTest#testAlreadyArchived",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ArchiveOperationTest#testArchiveComponentFailsWhenInCheckoutSingleVersion",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ArchiveOperationTest#testArchiveComponentSingleVersion",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ArchiveOperationTest#testArchiveFailsWhenHighestVersionIsInCheckoutState",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ArchiveOperationTest#testArchiveWithWrongId",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ArchiveOperationTest#testArchivedOriginsCalculation",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ArchiveOperationTest#testNoArchivedOriginsCalculation",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ArchiveOperationTest#testOnVspArchivedAndRestored",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ArchiveOperationTest#testScenario2_archive_1_0",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ArchiveOperationTest#testScenario2_archive_1_1",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ArchiveOperationTest#testScenario3_archive_3_0",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ArchiveOperationTest#testScenario4_archiveFromNonHighest",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ArchiveOperationTest#testScenario4_oneLowOneHighestVersion",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ExternalReferencesOperationTest#testAddComponentInstanceExternalRef",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ExternalReferencesOperationTest#testAddExternalReferences_success",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ExternalReferencesOperationTest#testDeleteComponentInstanceExternalRef",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ExternalReferencesOperationTest#testGetAllCIExternalRefs_noRefsExist",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ExternalReferencesOperationTest#testGetAllCIExternalRefs_noSuchComponentInstance",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ExternalReferencesOperationTest#testGetAllCIExternalRefs_nonExitingService_throwsException",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ExternalReferencesOperationTest#testGetAllCIExternalRefs_success",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ExternalReferencesOperationTest#testGetComponentInstanceExternalRef",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ExternalReferencesOperationTest#testGetComponentInstanceExternalRefForNonExistingObjectId",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ExternalReferencesOperationTest#testUpdateComponentInstanceExternalRef",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.GroupsOperationTest#addGroups_whenContainerHasGroups_addTheGivenGroupsToTheGroupsList",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.GroupsOperationTest#addGroups_whenContainerHasNoGroups_associateContainerWithGroup",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.GroupsOperationTest#updateGroupPropertiesOnComponent",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.InterfaceOperationTest#testAddInterface_Resource",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.InterfaceOperationTest#testAddInterface_Service",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.InterfaceOperationTest#testDeleteInterface_Resource",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.InterfaceOperationTest#testDeleteInterface_Service",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.InterfaceOperationTest#testUpdateInterfaceShouldFailWhenNOtCreatedFirst",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.InterfaceOperationTest#testUpdateInterface_Resource",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.InterfaceOperationTest#testUpdateInterface_Service",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.NodeTemplateOperationGraphTest#testCreateInstanceEdge",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.NodeTemplateOperationGraphTest#testProxyInstanceEdge",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.NodeTemplateOperationGraphTest#testRemoveInstanceEdge",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.PolicyOperationIntegrationTest#testUpdatePolicyProperties_multipleProperties",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.PolicyOperationIntegrationTest#testUpdatePolicyProperties_singleProperty",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.TopologyTemplateOperationCapabilityIntegrationTest#overrideCalculatedCapabilityProperties",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.TopologyTemplateOperationCapabilityIntegrationTest#updateToscaDataDeepElementsBlockToToscaElement",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ToscaElementOperationTest#testCreateDataType",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ToscaElementOperationTest#testCreateDataTypeDefinitionWithName",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ToscaElementOperationTest#testGetAllCertifiedServicesNoFilter",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ToscaElementOperationTest#testGetAllHighestResourcesNoFilter",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ToscaElementOperationTest#testGetAllHighestServicesNoFilter",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ToscaElementOperationTest#testGetAllResourcesCertifiedExclude",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ToscaElementOperationTest#testGetAllResourcesCertifiedNoFilter",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ToscaElementOperationTest#testGetCertifiedServicesExcludeList",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ToscaElementOperationTest#testGetHighestResourcesExclude",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ToscaElementOperationTest#testGetServicesExcludeList",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ToscaElementOperationTest#testUpdateToscaElement_NotFound",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ToscaOperationFacadePoliciesTest#updatePoliciesTargetsOfComponent_updateMultiplePolicies",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.ToscaOperationFacadePoliciesTest#updatePoliciesTargetsOfComponent_updateSinglePolicy",
+            "org.openecomp.sdc.be.model.jsonjanusgraph.operations.UpgradeOperationTest#testGetSimpleDependency",
+            "org.openecomp.sdc.be.model.operations.impl.AdditionalInformationOperationTest#testAddInfoParameter_InvalidId",
+            "org.openecomp.sdc.be.model.operations.impl.AdditionalInformationOperationTest#testDelAdditionalInfoParam_InvalidId",
+            "org.openecomp.sdc.be.model.operations.impl.AdditionalInformationOperationTest#testDummy",
+            "org.openecomp.sdc.be.model.operations.impl.AdditionalInformationOperationTest#testUpdateInfoParameter_InvalidId",
+            "org.openecomp.sdc.be.model.operations.impl.AnnotationTypeOperationsTest#compareTypes_differentDescription_shouldReturnFalse",
+            "org.openecomp.sdc.be.model.operations.impl.AnnotationTypeOperationsTest#compareTypes_differentProperty_shouldReturnFalse",
+            "org.openecomp.sdc.be.model.operations.impl.AnnotationTypeOperationsTest#compareTypes_differentType_shouldReturnFalse",
+            "org.openecomp.sdc.be.model.operations.impl.AnnotationTypeOperationsTest#compareTypes_sameExceptVersions_shouldReturnTrue",
+            "org.openecomp.sdc.be.model.operations.impl.AnnotationTypeOperationsTest#compareTypes_same_shouldReturnTrue",
+            "org.openecomp.sdc.be.model.operations.impl.AnnotationTypeOperationsTest#testAddType",
+            "org.openecomp.sdc.be.model.operations.impl.AnnotationTypeOperationsTest#testGetLatestType_TypeDoesntExist_shouldReturnNull",
+            "org.openecomp.sdc.be.model.operations.impl.AnnotationTypeOperationsTest#testGetLatestType_TypeExists_shouldReturnIt",
+            "org.openecomp.sdc.be.model.operations.impl.AnnotationTypeOperationsTest#testUpdateType_propertyAdded_shouldSucceed",
+            "org.openecomp.sdc.be.model.operations.impl.AnnotationTypeOperationsTest#testUpdateType_propertyDefaultValueModification_shouldSucceed",
+            "org.openecomp.sdc.be.model.operations.impl.AnnotationTypeOperationsTest#testUpdateType_propertyDescriptionModification_shouldSucceed",
+            "org.openecomp.sdc.be.model.operations.impl.AnnotationTypeOperationsTest#testUpdateType_propertyRemoved_shouldFail",
+            "org.openecomp.sdc.be.model.operations.impl.AnnotationTypeOperationsTest#testUpdateType_propertyTypeModification_shouldFail",
+            "org.openecomp.sdc.be.model.operations.impl.ArtifactOperationTest#testCreateDeleteArtifactWithHeatParams",
+            "org.openecomp.sdc.be.model.operations.impl.ArtifactOperationTest#testUpdateArtifactMetadataWithHeatParams",
+            "org.openecomp.sdc.be.model.operations.impl.ArtifactOperationTest#testUpdateArtifactWithHeatParams",
+            "org.openecomp.sdc.be.model.operations.impl.ArtifactOperationTest#updateHeatArtifactWithTwoResources",
+            "org.openecomp.sdc.be.model.operations.impl.ArtifactTypeOperationTest#createAndModifyArtifactType",
+            "org.openecomp.sdc.be.model.operations.impl.ArtifactTypeOperationTest#createAndModifyArtifactType_WithProps",
+            "org.openecomp.sdc.be.model.operations.impl.ArtifactTypeOperationTest#createArtifactType",
+            "org.openecomp.sdc.be.model.operations.impl.CapabilityTypeOperationTest#testAddCapabilityType",
+            "org.openecomp.sdc.be.model.operations.impl.CapabilityTypeOperationTest#testAddCapabilityTypeWithModel",
+            "org.openecomp.sdc.be.model.operations.impl.CapabilityTypeOperationTest#testAddCapabilityTypeWithProperties",
+            "org.openecomp.sdc.be.model.operations.impl.CapabilityTypeOperationTest#testAddDerviedCapabilityType",
+            "org.openecomp.sdc.be.model.operations.impl.CapabilityTypeOperationTest#testDummy",
+            "org.openecomp.sdc.be.model.operations.impl.CapabilityTypeOperationTest#testGetCapabilityTypeNotFound",
+            "org.openecomp.sdc.be.model.operations.impl.CapabilityTypeOperationTest#updateCapabilityType_basicFields",
+            "org.openecomp.sdc.be.model.operations.impl.CapabilityTypeOperationTest#updateCapabilityType_derivedFrom_updateToNullDerivedFrom_Failed",
+            "org.openecomp.sdc.be.model.operations.impl.CapabilityTypeOperationTest#updateCapabilityType_derivedFrom_whenNoPrevDerivedFrom_updateToNewDerivedFrom",
+            "org.openecomp.sdc.be.model.operations.impl.CapabilityTypeOperationTest#updateCapabilityType_returnNotFoundErrorIfTryingToUpdateANonExistingType",
+            "org.openecomp.sdc.be.model.operations.impl.CapabilityTypeOperationTest#updateCapabilityType_updateDerivedFrom",
+            "org.openecomp.sdc.be.model.operations.impl.CapabilityTypeOperationTest#updateCapabilityType_updateDerivedFrom_Failed_NewParentIsNotChildOfOldOne",
+            "org.openecomp.sdc.be.model.operations.impl.CapabilityTypeOperationTest#updateCapabilityType_updateProperties",
+            "org.openecomp.sdc.be.model.operations.impl.CapabilityTypeOperationTest#updateCapabilityType_updatePropertiesFailedDueDeletedProp",
+            "org.openecomp.sdc.be.model.operations.impl.CapabilityTypeOperationTest#updateCapabilityType_updatePropertiesFailedDueTypeChange",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#getAllGroupTypes",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#getAllGroupTypes_whenPassingExclusionList_doNotReturnExcludedTypes",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#groupTypeWithCapabilityAndPropsButCapTypeWithoutProps",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#groupTypeWithCapabilityTypeAndEdgeCreated",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#groupTypeWithCapabilityTypeAndEdgeCreated_OverrideDefaultCapabilityTypeValue",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#groupTypeWithoutCapabilityCreated",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#testAddGroupTypeWithModel",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#testUpdateGroupTypeWithDerivedFromEdge",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#testUpdateGroupTypeWithNonExistingParent",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#testUpdateNonExistingGroupType",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#testUpdateNotDerivedGroupType",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#testUpgradeGroupType",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#updateGroupTypeWithCapability_FailedDueToCapabilityChangeTypeAttempt",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#updateGroupTypeWithCapability_FailedDueToCapabilityDeleteAttempt",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#updateGroupTypeWithCapability_Success",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#updateGroupType_basicFields",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#updateGroupType_derivedFrom_updateToNullDerivedFrom_derivedFromDeleted_Failed",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#updateGroupType_derivedFrom_whenNoPrevDerivedFrom_updateToNewDerivedFrom",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#updateGroupType_returnNotFoundErrorIfTryingToUpdateANonExistingType",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#updateGroupType_updateDerivedFrom",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#updateGroupType_updateDerivedFrom_CauseEndlessRecursion",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#updateGroupType_updatePropertiesType_FailedDueAttemptToChangePropertyType",
+            "org.openecomp.sdc.be.model.operations.impl.GroupTypeOperationTest#validateGroupType_FailedDueAttempToCreateGroupTypeWithPropertyWhichTypeIsDifferentFromTypeOfParentPropertyWithTheSameName",
+            "org.openecomp.sdc.be.model.operations.impl.InterfaceLifecycleOperationTest#createInterfaceOnResourceTest",
+            "org.openecomp.sdc.be.model.operations.impl.InterfaceLifecycleOperationTest#getAllInterfacesOfResourceTest",
+            "org.openecomp.sdc.be.model.operations.impl.InterfaceLifecycleOperationTest#removeInterfaceTypeFromAdditionalType",
+            "org.openecomp.sdc.be.model.operations.impl.InterfaceLifecycleOperationTest#testDummy",
+            "org.openecomp.sdc.be.model.operations.impl.InterfaceLifecycleOperationTest#testGetAllInterfaceLifecycleTypesWithModel",
+            "org.openecomp.sdc.be.model.operations.impl.InterfaceLifecycleOperationTest#testGetAllInterfaceLifecycleTypes_Success",
+            "org.openecomp.sdc.be.model.operations.impl.InterfaceLifecycleOperationTest#testGetAllInterfaceLifecycleTypes_TypesNotFound",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#addPolicyType_derivedFromAddedCorrectly",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#addPolicyType_whenDerivedFromNodeNotExist_returnNotFound",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#getAllPolicyTypes",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#getAllPolicyTypes_noPolicies",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#getAllPolicyTypes_whenPassingExcludedTypeList_dontReturnExcludedTypes",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#testAddPolicyType",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#testAddPolicyTypeWithModel",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#testGetLatestPolicyTypeByType",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#testGetLatestPolicyTypeByType_derivedFromFetchedCorrectly",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#testGetLatestPolicyTypeByType_whenGettingTypeGetPropertiesFromAllDerivedFromChain",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#testGetLatestPolicyTypeByType_whenGettingTypeGetPropertiesFromAllDerivedFromChain_policyTypeHasNoDirectProps",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#updatePolicyType_basicFields",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#updatePolicyType_derivedFrom_updateToNullDerivedFrom_derivedFromDeleted",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#updatePolicyType_derivedFrom_whenNoPrevDerivedFrom_updateToNewDerivedFrom",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#updatePolicyType_returnNotFoundErrorIfTryingToUpdateANonExistingType",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#updatePolicyType_updateDerivedFrom",
+            "org.openecomp.sdc.be.model.operations.impl.PolicyTypeOperationTest#updatePolicyType_updateProperties",
+            "org.openecomp.sdc.be.model.operations.impl.RelationshipTypeOperationTest#testAddRelationshipType",
+            "org.openecomp.sdc.be.model.operations.impl.RelationshipTypeOperationTest#testAddRelationshipTypeToModel",
+            "org.openecomp.sdc.be.model.operations.impl.RelationshipTypeOperationTest#testAddRelationshipTypeValidationFailStatusNullInTransactionFalse",
+            "org.openecomp.sdc.be.model.operations.impl.RelationshipTypeOperationTest#testAddRelationshipTypeValidationFailStatusPropertiesReturnedInTransactionFalse",
+            "org.openecomp.sdc.be.model.operations.impl.RelationshipTypeOperationTest#testDummy",
+            "org.openecomp.sdc.be.model.operations.impl.RelationshipTypeOperationTest#testGetAllRelationshipTypesNotConnnected",
+            "org.openecomp.sdc.be.model.operations.impl.RelationshipTypeOperationTest#testGetAllRelationshipTypesNotFound",
+            "org.openecomp.sdc.be.model.operations.impl.RelationshipTypeOperationTest#testGetAllRelationshipTypesSuccess",
+            "org.openecomp.sdc.be.model.operations.impl.RelationshipTypeOperationTest#testGetRelationshipTypeByUid",
+            "org.openecomp.sdc.be.model.operations.impl.RelationshipTypeOperationTest#testGetRelationshipTypeNotConnected",
+            "org.openecomp.sdc.be.model.operations.impl.RelationshipTypeOperationTest#testGetRelationshipTypeSuccess",
+            "org.openecomp.sdc.be.model.operations.impl.RelationshipTypeOperationTest#testUpdateRelationshipType",
+            "org.openecomp.sdc.be.model.operations.impl.ToscaElementLifecycleOperationTest#catalogTest",
+            "org.openecomp.sdc.be.model.operations.impl.ToscaElementLifecycleOperationTest#lifecycleTest",
+            "org.openecomp.sdc.be.model.operations.impl.ToscaElementLifecycleOperationTest#serviceConformanceLevelTest",
+            "org.openecomp.sdc.be.model.operations.impl.ToscaElementLifecycleOperationTest#testGetToscaElOwner_Fail"
+          ],
+          "failures": 0,
+          "passed": 1120,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 198,
+          "tests": 1276
+        },
+        "common-app-api": {
+          "errors": 6,
+          "failed_tests": [
+            "org.openecomp.sdc.common.util.SerializationUtilsTest#testDeserializeExtReturnsFalseIfObjectIsNotSerializable",
+            "org.openecomp.sdc.common.util.SerializationUtilsTest#testDeserializeReturnsFalseIfObjectIsNotSerializable",
+            "org.openecomp.sdc.common.util.SerializationUtilsTest#testSerializeAndDeserializeReturnsCorrectObject",
+            "org.openecomp.sdc.common.util.SerializationUtilsTest#testSerializeExtAndDeserializeExtReturnsCorrectObject",
+            "org.openecomp.sdc.common.util.SerializationUtilsTest#testSerializeExtReturnsFalseIfObjectIsNotSerializable",
+            "org.openecomp.sdc.common.util.SerializationUtilsTest#testSerializeReturnsFalseIfObjectIsNotSerializable"
+          ],
+          "failures": 0,
+          "passed": 557,
+          "skipped": 3,
+          "skipped_tests": [
+            "org.openecomp.sdc.common.test.E2EHttpClientTest#testSsl",
+            "org.openecomp.sdc.common.test.E2EHttpClientTest#testSslMutliThread",
+            "org.openecomp.sdc.common.zip.ZipUtilsTest#testZipSlipInUnzipWindows"
+          ],
+          "suites": 81,
+          "tests": 566
+        },
+        "common-app-logging": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 79,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 16,
+          "tests": 79
+        },
+        "common-be": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 867,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 81,
+          "tests": 867
+        },
+        "common-be-tests-utils": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 1,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 1
+        },
+        "common/onap-common-configuration-management/onap-configuration-management-api": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 23,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 2,
+          "tests": 23
+        },
+        "common/onap-common-configuration-management/onap-configuration-management-core": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 54,
+          "skipped": 2,
+          "skipped_tests": [
+            "org.onap.config.test.CliFallbackAndLookupTest#org.onap.config.test.CliFallbackAndLookupTest",
+            "org.onap.config.test.NodeSpecificCliTest#org.onap.config.test.NodeSpecificCliTest"
+          ],
+          "suites": 20,
+          "tests": 56
+        },
+        "common/onap-generic-artifact-browser/onap-generic-artifact-browser-component-tests": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 2,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 2
+        },
+        "common/onap-generic-artifact-browser/onap-generic-artifact-browser-service": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 12,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 12
+        },
+        "common/onap-tosca-datatype": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 126,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 52,
+          "tests": 126
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/action-library-rest/action-library-rest-services": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 31,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 2,
+          "tests": 31
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/application-config-rest/application-config-rest-services": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 5,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 3,
+          "tests": 5
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/conflict-rest/conflict-rest-services": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 8,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 6,
+          "tests": 8
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/conflict-rest/conflict-rest-types": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 4,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 4,
+          "tests": 4
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/externaltesting-rest/externaltesting-rest-services": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 9,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 9
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/healthcheck-rest/healthcheck-rest-services": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 1,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 1
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/healthcheck-rest/healthcheck-rest-types": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 2,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 2,
+          "tests": 2
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/item-permissions-rest/item-permissions-rest-services": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 1,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 1
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/item-permissions-rest/item-permissions-rest-types": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 2,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 2,
+          "tests": 2
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/item-rest/item-rest-services": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 62,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 11,
+          "tests": 62
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/item-rest/item-rest-types": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 13,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 12,
+          "tests": 13
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/notifications-rest/notifications-rest-services": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 1,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 1
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/notifications-rest/notifications-rest-types": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 7,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 3,
+          "tests": 7
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/onboarding-rest-war": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 5,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 3,
+          "tests": 5
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/openecomp-sdc-common-rest": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 9,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 6,
+          "tests": 9
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/togglz-rest/togglz-rest-services": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 2,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 2
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/togglz-rest/togglz-rest-types": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 2,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 2,
+          "tests": 2
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/unique-type-rest/unique-type-rest-services": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 2,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 2
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/validation-rest/validation-rest-services": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 3,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 2,
+          "tests": 3
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/vendor-license-rest/vendor-license-rest-services": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 96,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 19,
+          "tests": 96
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/vendor-license-rest/vendor-license-rest-types": {
+          "errors": 0,
+          "failed_tests": [
+            "org.openecomp.sdc.vendorsoftwareproduct.dao.type.ComponentDependencyModelEntityTest#accessorsTest",
+            "org.openecomp.sdc.vendorsoftwareproduct.dao.type.ComponentMonitoringUploadEntityTest#accessorsTest",
+            "org.openecomp.sdc.vendorsoftwareproduct.dao.type.OrchestrationTemplateCandidateDataEntityTest#accessorsTest",
+            "org.openecomp.sdc.vendorsoftwareproduct.dao.type.ProcessEntityTest#accessorsTest"
+          ],
+          "failures": 4,
+          "passed": 26,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 26,
+          "tests": 30
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/vendor-software-products-rest/vendor-software-products-rest-services": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 165,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 55,
+          "tests": 165
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/vendor-software-products-rest/vendor-software-products-rest-types": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 152,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 44,
+          "tests": 152
+        },
+        "openecomp-be/api/openecomp-sdc-rest-webapp/vendor-software-products-rest/vnf-repository-rest-services": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 8,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 8
+        },
+        "openecomp-be/backend/openecomp-sdc-action-manager": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 29,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 29
+        },
+        "openecomp-be/backend/openecomp-sdc-activity-log-manager": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 3,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 2,
+          "tests": 3
+        },
+        "openecomp-be/backend/openecomp-sdc-healthcheck-manager": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 10,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 5,
+          "tests": 10
+        },
+        "openecomp-be/backend/openecomp-sdc-item-permissions-manager": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 3,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 3
+        },
+        "openecomp-be/backend/openecomp-sdc-security-util": {
+          "errors": 0,
+          "failed_tests": [
+            "org.openecomp.sdc.securityutil.CipherUtilTest#decryptInvalidData"
+          ],
+          "failures": 1,
+          "passed": 20,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 5,
+          "tests": 21
+        },
+        "openecomp-be/backend/openecomp-sdc-validation-manager": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 5,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 3,
+          "tests": 5
+        },
+        "openecomp-be/backend/openecomp-sdc-vendor-license-manager": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 55,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 7,
+          "tests": 55
+        },
+        "openecomp-be/backend/openecomp-sdc-vendor-software-product-manager": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 431,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 61,
+          "tests": 431
+        },
+        "openecomp-be/lib/openecomp-common-lib": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 11,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 2,
+          "tests": 11
+        },
+        "openecomp-be/lib/openecomp-conflict-lib/openecomp-conflict-api": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 5,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 4,
+          "tests": 5
+        },
+        "openecomp-be/lib/openecomp-conflict-lib/openecomp-conflict-core": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 5,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 2,
+          "tests": 5
+        },
+        "openecomp-be/lib/openecomp-core-lib/openecomp-nosqldb-lib/openecomp-nosqldb-api": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 9,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 9
+        },
+        "openecomp-be/lib/openecomp-core-lib/openecomp-nosqldb-lib/openecomp-nosqldb-core": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 4,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 3,
+          "tests": 4
+        },
+        "openecomp-be/lib/openecomp-core-lib/openecomp-session-lib": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 4,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 2,
+          "tests": 4
+        },
+        "openecomp-be/lib/openecomp-core-lib/openecomp-utilities-lib": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 76,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 6,
+          "tests": 76
+        },
+        "openecomp-be/lib/openecomp-core-lib/openecomp-zusammen-lib/openecomp-zusammen-api": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 6,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 6
+        },
+        "openecomp-be/lib/openecomp-core-lib/openecomp-zusammen-lib/openecomp-zusammen-core": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 15,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 15
+        },
+        "openecomp-be/lib/openecomp-healing-lib/openecomp-sdc-healing-core": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 3,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 3
+        },
+        "openecomp-be/lib/openecomp-healing-lib/openecomp-sdc-healing-impl": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 11,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 3,
+          "tests": 11
+        },
+        "openecomp-be/lib/openecomp-heat-lib": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 64,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 15,
+          "tests": 64
+        },
+        "openecomp-be/lib/openecomp-item-permissions-lib/openecomp-item-permissions-api": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 1,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 1
+        },
+        "openecomp-be/lib/openecomp-item-permissions-lib/openecomp-item-permissions-core": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 13,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 2,
+          "tests": 13
+        },
+        "openecomp-be/lib/openecomp-item-permissions-lib/openecomp-item-permissions-impl": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 10,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 10
+        },
+        "openecomp-be/lib/openecomp-sdc-action-lib/openecomp-sdc-action-api": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 23,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 7,
+          "tests": 23
+        },
+        "openecomp-be/lib/openecomp-sdc-activity-log-lib/openecomp-sdc-activity-log-api": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 1,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 1
+        },
+        "openecomp-be/lib/openecomp-sdc-enrichment-lib/openecomp-sdc-enrichment-api": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 10,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 4,
+          "tests": 10
+        },
+        "openecomp-be/lib/openecomp-sdc-enrichment-lib/openecomp-sdc-enrichment-core": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 1,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 1
+        },
+        "openecomp-be/lib/openecomp-sdc-enrichment-lib/openecomp-sdc-enrichment-impl": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 20,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 5,
+          "tests": 20
+        },
+        "openecomp-be/lib/openecomp-sdc-externaltesting-lib/openecomp-sdc-externaltesting-api": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 16,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 4,
+          "tests": 16
+        },
+        "openecomp-be/lib/openecomp-sdc-externaltesting-lib/openecomp-sdc-externaltesting-impl": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 9,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 2,
+          "tests": 9
+        },
+        "openecomp-be/lib/openecomp-sdc-logging-lib/openecomp-sdc-logging-api": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 57,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 13,
+          "tests": 57
+        },
+        "openecomp-be/lib/openecomp-sdc-logging-lib/openecomp-sdc-logging-core": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 103,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 12,
+          "tests": 103
+        },
+        "openecomp-be/lib/openecomp-sdc-logging-lib/openecomp-sdc-logging-spring": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 14,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 14
+        },
+        "openecomp-be/lib/openecomp-sdc-model-lib/openecomp-sdc-model-api": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 16,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 4,
+          "tests": 16
+        },
+        "openecomp-be/lib/openecomp-sdc-notification-lib/openecomp-sdc-notification-api": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 19,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 3,
+          "tests": 19
+        },
+        "openecomp-be/lib/openecomp-sdc-notification-lib/openecomp-sdc-notification-core": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 10,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 4,
+          "tests": 10
+        },
+        "openecomp-be/lib/openecomp-sdc-notification-lib/openecomp-sdc-notification-worker": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 1,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 1
+        },
+        "openecomp-be/lib/openecomp-sdc-translator-lib/openecomp-sdc-translator-core": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 486,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 71,
+          "tests": 486
+        },
+        "openecomp-be/lib/openecomp-sdc-validation-lib/openecomp-sdc-validation-api": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 8,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 2,
+          "tests": 8
+        },
+        "openecomp-be/lib/openecomp-sdc-validation-lib/openecomp-sdc-validation-core": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 2,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 2
+        },
+        "openecomp-be/lib/openecomp-sdc-validation-lib/openecomp-sdc-validation-impl": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 148,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 28,
+          "tests": 148
+        },
+        "openecomp-be/lib/openecomp-sdc-validation-lib/openecomp-sdc-validation-sdk": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 6,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 6
+        },
+        "openecomp-be/lib/openecomp-sdc-vendor-license-lib/openecomp-sdc-vendor-license-api": {
+          "errors": 0,
+          "failed_tests": [
+            "org.openecomp.sdc.vendorlicense.dao.types.FeatureGroupEntityTest#shouldHaveValidGettersAndSetters",
+            "org.openecomp.sdc.vendorlicense.dao.types.LicenseAgreementEntityTest#shouldHaveValidGettersAndSetters",
+            "org.openecomp.sdc.vendorlicense.dao.types.LimitEntityTest#shouldHaveValidGettersAndSetters",
+            "org.openecomp.sdc.vendorlicense.dao.types.VendorLicenseModelEntityTest#shouldHaveValidGettersAndSetters"
+          ],
+          "failures": 4,
+          "passed": 13,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 17,
+          "tests": 17
+        },
+        "openecomp-be/lib/openecomp-sdc-vendor-license-lib/openecomp-sdc-vendor-license-core": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 11,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 6,
+          "tests": 11
+        },
+        "openecomp-be/lib/openecomp-sdc-vendor-software-product-lib/openecomp-sdc-vendor-software-product-api": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 3,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 2,
+          "tests": 3
+        },
+        "openecomp-be/lib/openecomp-sdc-vendor-software-product-lib/openecomp-sdc-vendor-software-product-core": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 48,
+          "skipped": 2,
+          "skipped_tests": [
+            "org.openecomp.sdc.vendorsoftwareproduct.dao.impl.PackageInfoDaoFactoryImplTest#createInterface",
+            "org.openecomp.sdc.vendorsoftwareproduct.dao.impl.VspMergeDaoFactoryImplTest#createInterface"
+          ],
+          "suites": 25,
+          "tests": 50
+        },
+        "openecomp-be/lib/openecomp-sdc-versioning-lib/openecomp-sdc-versioning-api": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 41,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 18,
+          "tests": 41
+        },
+        "openecomp-be/lib/openecomp-sdc-versioning-lib/openecomp-sdc-versioning-core": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 88,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 8,
+          "tests": 88
+        },
+        "openecomp-be/lib/openecomp-tosca-converter-lib/openecomp-tosca-converter-core": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 61,
+          "skipped": 1,
+          "skipped_tests": [
+            "org.openecomp.core.impl.ToscaConvertorDefinitionsTest#loadCsar"
+          ],
+          "suites": 11,
+          "tests": 62
+        },
+        "openecomp-be/lib/openecomp-tosca-lib": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 233,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 11,
+          "tests": 233
+        },
+        "openecomp-be/tools/zusammen-tools": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 7,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 6,
+          "tests": 7
+        }
+      },
+      "notes": [
+        "Baseline collected on JDK 17.0.20.1 with the sdc default -T2 and surefire forkCount=1C; all 161 reactor modules plus catalog-fe built (exit 0); failsafe ITs (Docker/Testcontainers) are not part of it.",
+        "catalog-dao: CassandraClientTest, SdcSchemaBuilderTest and SdcSchemaUtilsTest (cassandra-unit EmbeddedCassandra) hang forever in this sandbox; they are excluded via -Dsurefire.excludesFile and listed under environment_exclusions, not counted in the module numbers.",
+        "Attribution of the 229 errors: 219 = JanusGraph in-memory \"PermanentLockingException ... mismatched timestamps\" while building the Spring/Janus context (catalog-model 156, catalog-dao 32 = JanusGraphGenericDaoTest 10 + JanusGraphDaoTest 22, catalog-be 31 = ExternalRefsServletTest 18 + ArchiveEndpointTest 9 + ForwardingPath tests 4); reproduced serially and also on JDK 21.0.12.1, so sandbox/environment, not parallelism and not the JDK.",
+        "10 errors = JDK 17 strong encapsulation (InaccessibleObjectException: common-app-api SerializationUtilsTest 6 via java.math.BigDecimal, catalog-be gson PropertyConvertorTest/PropertyConstraintsUtilsTest 4 via java.util.regex.Pattern); they need --add-opens or a code change.",
+        "The 11 failures are plain assertion failures unrelated to JDK or environment: vendor-license-rest-types 4 and vendor-license-api 4 (bean getter/setter checks), asdctool GraphMLConverterTest 2, security-util CipherUtilTest 1.",
+        "The build rewrites the tracked file asdctool/sdc-cassandra-init/version.sh (1.16.1 -> 1.19.0); restore it with git checkout after a baseline run."
+      ],
+      "reactor": {
+        "failed_modules": [],
+        "skipped_modules": [],
+        "success_modules": 161
+      },
+      "status": "ok",
+      "totals": {
+        "errors": 229,
+        "failures": 11,
+        "modules_with_tests": 90,
+        "passed": 10369,
+        "skipped": 8,
+        "tests": 10617
+      }
+    },
+    "so": {
+      "build_exit_codes": [
+        0
+      ],
+      "commands": [
+        "mvn -B -ntp -fae -Dmaven.test.failure.ignore=true -Dstyle.color=never -Dsurefire.timeout=2400 clean install"
+      ],
+      "jdk": {
+        "select": "17",
+        "version": "17.0.20.1"
+      },
+      "maven": "3.9.11",
+      "modules": {
+        "adapters/mso-adapter-utils": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 111,
+          "skipped": 1,
+          "skipped_tests": [
+            "org.onap.so.openstack.utils.MsoMulticloudUtilsTest#createStackMulticloudClientIsNull"
+          ],
+          "suites": 25,
+          "tests": 112
+        },
+        "adapters/mso-adapters-rest-interface": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 45,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 18,
+          "tests": 45
+        },
+        "adapters/mso-catalog-db-adapter": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 152,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 17,
+          "tests": 152
+        },
+        "adapters/mso-openstack-adapters": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 105,
+          "skipped": 3,
+          "skipped_tests": [
+            "org.onap.so.adapters.vnf.MsoVnfAdapterImplTest#deleteVnfTest",
+            "org.onap.so.heatbridge.HeatBridgeImplTest#testUpdateVserversToAai",
+            "org.onap.so.heatbridge.HeatBridgeImplTest#testUpdateVserversToAaiNoHypervisorName"
+          ],
+          "suites": 20,
+          "tests": 108
+        },
+        "adapters/mso-requests-db-adapter": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 46,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 8,
+          "tests": 46
+        },
+        "adapters/mso-sdnc-adapter": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 46,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 15,
+          "tests": 46
+        },
+        "asdc-controller": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 180,
+          "skipped": 1,
+          "skipped_tests": [
+            "org.onap.so.asdc.installer.bpmn.BpmnInstallerTest#buildMimeMultiPart_Test"
+          ],
+          "suites": 43,
+          "tests": 181
+        },
+        "bpmn/MSOCommonBPMN": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 612,
+          "skipped": 18,
+          "skipped_tests": [
+            "org.onap.so.bpmn.common.scripts.AllottedResourceUtilsTest#getARbyId",
+            "org.onap.so.bpmn.common.scripts.GenerateVfModuleNameTest#testQueryAAI",
+            "org.onap.so.bpmn.common.scripts.GenerateVfModuleNameTest#testQueryAAIEndpointNull",
+            "org.onap.so.bpmn.common.scripts.MsoUtilsTest#testBuildUcpeVmsServiceInformation",
+            "org.onap.so.bpmn.common.scripts.PrepareUpdateAAIVfModuleTest#testGetGenericVnf",
+            "org.onap.so.bpmn.common.scripts.PrepareUpdateAAIVfModuleTest#testGetGenericVnfEndpointNull",
+            "org.onap.so.bpmn.common.scripts.PrepareUpdateAAIVfModuleTest#testUpdateVfModule",
+            "org.onap.so.bpmn.common.scripts.PrepareUpdateAAIVfModuleTest#testUpdateVfModuleEndpointNull",
+            "org.onap.so.bpmn.common.scripts.SDNCAdapterRestV1Test#testPreProcessRequestBadTimeout",
+            "org.onap.so.bpmn.common.scripts.SDNCAdapterRestV2Test#testPreProcessRequestBadTimeout",
+            "org.onap.so.bpmn.common.scripts.SniroHomingV1Test#testCallSniro",
+            "org.onap.so.bpmn.common.scripts.SniroHomingV1Test#testCallSniroHostNull",
+            "org.onap.so.bpmn.common.scripts.SniroHomingV1Test#testCallSniroMissingAuth",
+            "org.onap.so.bpmn.common.scripts.TrinityExceptionUtilTest#testMapAAIExceptionTCommonException",
+            "org.onap.so.bpmn.common.scripts.UpdateAAIGenericVnfTest#testGetGenericVnf",
+            "org.onap.so.bpmn.common.scripts.UpdateAAIGenericVnfTest#testGetGenericVnfEndpointNull",
+            "org.onap.so.bpmn.common.scripts.UpdateAAIGenericVnfTest#testUpdateGenericVnf",
+            "org.onap.so.bpmn.common.scripts.UpdateAAIGenericVnfTest#testUpdateGenericVnfEndpointNull"
+          ],
+          "suites": 110,
+          "tests": 630
+        },
+        "bpmn/MSOCoreBPMN": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 108,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 33,
+          "tests": 108
+        },
+        "bpmn/mso-infrastructure-bpmn": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 20,
+          "skipped": 3,
+          "skipped_tests": [
+            "org.onap.so.bpmn.common.ReceiveWorkflowMessageTest#happyPath",
+            "org.onap.so.bpmn.common.ReceiveWorkflowMessageTest#timeout",
+            "org.onap.so.bpmn.common.WorkflowAsyncResourceTest#asyncRequestSuccess"
+          ],
+          "suites": 12,
+          "tests": 23
+        },
+        "bpmn/so-bpmn-building-blocks": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 92,
+          "skipped": 15,
+          "skipped_tests": [
+            "org.onap.so.bpmn.infrastructure.bpmn.activity.DeployActivitySpecsTest#DeployActivitySpec_Test",
+            "org.onap.so.bpmn.infrastructure.bpmn.process.WorkflowActionBBTest#errorCatchBpmnSubprocessHandlingTest",
+            "org.onap.so.bpmn.infrastructure.bpmn.process.WorkflowActionBBTest#errorCatchSubprocessHandlingTest",
+            "org.onap.so.bpmn.infrastructure.bpmn.process.WorkflowActionBBTest#rainyDayAbort",
+            "org.onap.so.bpmn.infrastructure.bpmn.process.WorkflowActionBBTest#retrieveBBExecutionListerrorHandling",
+            "org.onap.so.bpmn.infrastructure.bpmn.process.WorkflowActionBBTest#sunnyDayRollback",
+            "org.onap.so.bpmn.infrastructure.bpmn.process.WorkflowActionBBTest#sunnyDaySuccessIsTopLevelFlow",
+            "org.onap.so.bpmn.infrastructure.bpmn.process.WorkflowActionBBTest#sunnyDaySuccessNotTopLevelFlow",
+            "org.onap.so.bpmn.infrastructure.bpmn.subprocess.ExecuteBuildingBlockTest#test_rainyDayExecuteBuildingBlock_retryNoRetriesLeft",
+            "org.onap.so.bpmn.infrastructure.bpmn.subprocess.ExecuteBuildingBlockTest#test_rainyDayExecuteBuildingBlock_retryRetriesLeft",
+            "org.onap.so.bpmn.infrastructure.bpmn.subprocess.ExecuteBuildingBlockTest#test_rainyDayExecuteBuildingBlock_rollbackOrAbort",
+            "org.onap.so.bpmn.infrastructure.bpmn.subprocess.PauseForManualTaskRainyDayTest#rainyDayPauseForManualTask_Test",
+            "org.onap.so.bpmn.infrastructure.bpmn.subprocess.PauseForManualTaskRainyDayTest#sunnyDayPauseForManualTaskCompleted_Test",
+            "org.onap.so.bpmn.infrastructure.bpmn.subprocess.PauseForManualTaskRainyDayTest#sunnyDayPauseForManualTaskRainyDayTimeout_Test",
+            "org.onap.so.bpmn.infrastructure.bpmn.subprocess.UnassignVnfBBTest#rainyDayUnassignVnfInstanceGroupsDeleteFailed_Test"
+          ],
+          "suites": 49,
+          "tests": 107
+        },
+        "bpmn/so-bpmn-infrastructure-common": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 713,
+          "skipped": 24,
+          "skipped_tests": [
+            "org.onap.so.bpmn.infrastructure.scripts.ActivateSliceSubnetTest#testPrepareInitOperationStatus",
+            "org.onap.so.bpmn.infrastructure.scripts.CreateVfModuleVolumeInfraV1Test#testPreProcessRequest",
+            "org.onap.so.bpmn.infrastructure.scripts.DeAllocateSliceSubnetTest#testPrepareInitOperationStatus",
+            "org.onap.so.bpmn.infrastructure.scripts.DoAllocateTnNssiTest#testPrepareOofSelection",
+            "org.onap.so.bpmn.infrastructure.scripts.DoAllocateTnNssiTest#testprocessOofSelection",
+            "org.onap.so.bpmn.infrastructure.scripts.DoDeallocateTnNssiTest#testPerformOofNSSITerminationCall",
+            "org.onap.so.bpmn.infrastructure.scripts.DoDeallocateTnNssiTest#testPrepareOOFNssiTerminationRequest",
+            "org.onap.so.bpmn.infrastructure.scripts.DoDeleteNetworkInstanceTest#postProcessResponse",
+            "org.onap.so.bpmn.infrastructure.scripts.ModifySliceSubnetTest#testPrepareInitOperationStatus",
+            "org.onap.so.bpmn.vcpe.scripts.DoCreateAllottedResourceBRGRollbackTest#deleteAaiAR",
+            "org.onap.so.bpmn.vcpe.scripts.DoCreateAllottedResourceBRGRollbackTest#updateAaiAROrchStatus",
+            "org.onap.so.bpmn.vcpe.scripts.DoCreateAllottedResourceBRGTest#createAaiAR_NoArid_NoModelUuids",
+            "org.onap.so.bpmn.vcpe.scripts.DoCreateAllottedResourceBRGTest#getAaiAR",
+            "org.onap.so.bpmn.vcpe.scripts.DoCreateAllottedResourceBRGTest#getAaiAR_NoStatus",
+            "org.onap.so.bpmn.vcpe.scripts.DoCreateAllottedResourceBRGTest#updateAaiAROrchStatus",
+            "org.onap.so.bpmn.vcpe.scripts.DoCreateAllottedResourceTXCRollbackTest#deleteAaiAR",
+            "org.onap.so.bpmn.vcpe.scripts.DoCreateAllottedResourceTXCRollbackTest#updateAaiAROrchStatus",
+            "org.onap.so.bpmn.vcpe.scripts.DoCreateAllottedResourceTXCTest#getAaiAR",
+            "org.onap.so.bpmn.vcpe.scripts.DoCreateAllottedResourceTXCTest#getAaiAR_NoStatus",
+            "org.onap.so.bpmn.vcpe.scripts.DoCreateAllottedResourceTXCTest#updateAaiAROrchStatus",
+            "org.onap.so.bpmn.vcpe.scripts.DoDeleteAllottedResourceBRGTest#deleteAaiAR",
+            "org.onap.so.bpmn.vcpe.scripts.DoDeleteAllottedResourceBRGTest#updateAaiAROrchStatus",
+            "org.onap.so.bpmn.vcpe.scripts.DoDeleteAllottedResourceTXCTest#deleteAaiAR",
+            "org.onap.so.bpmn.vcpe.scripts.DoDeleteAllottedResourceTXCTest#updateAaiAROrchStatus"
+          ],
+          "suites": 104,
+          "tests": 737
+        },
+        "bpmn/so-bpmn-infrastructure-flows": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 4,
+          "skipped": 1,
+          "skipped_tests": [
+            "org.onap.so.bpmn.infrastructure.process.CreateVcpeResCustServiceSimplifiedTest#"
+          ],
+          "suites": 5,
+          "tests": 5
+        },
+        "bpmn/so-bpmn-moi": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 7,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 3,
+          "tests": 7
+        },
+        "bpmn/so-bpmn-tasks": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 1086,
+          "skipped": 5,
+          "skipped_tests": [
+            "org.onap.so.bpmn.infrastructure.decisionpoint.impl.buildingblock.ControllerExecutionBBTestIT#testExecution_cdsConfigAssign_actionExecuted",
+            "org.onap.so.bpmn.infrastructure.workflow.tasks.WorkflowActionTest#selectExecutionListNetworkCollectionMacroCreate",
+            "org.onap.so.bpmn.infrastructure.workflow.tasks.WorkflowActionTest#selectExecutionListNetworkCollectionMacroDelete",
+            "org.onap.so.client.orchestration.AAIServiceInstanceResourcesTest#test_updateServiceInstance",
+            "org.onap.so.client.orchestration.AAIServiceInstanceResourcesTest#updateOrchestrationStatusServiceInstanceTest"
+          ],
+          "suites": 146,
+          "tests": 1091
+        },
+        "common/clients/client-cds": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 3,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 3
+        },
+        "common/clients/clients": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 36,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 14,
+          "tests": 36
+        },
+        "common/clients/clients-base": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 5,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 2,
+          "tests": 5
+        },
+        "common/common": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 57,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 17,
+          "tests": 57
+        },
+        "common/logger": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 2,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 2,
+          "tests": 2
+        },
+        "common/utils": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 11,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 6,
+          "tests": 11
+        },
+        "graph-inventory/aai-client": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 109,
+          "skipped": 1,
+          "skipped_tests": [
+            "org.onap.aaiclient.client.aai.AAIPServerTest#pserverActualTest"
+          ],
+          "suites": 23,
+          "tests": 110
+        },
+        "graph-inventory/aai-fluent-uri-builder": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 34,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 9,
+          "tests": 34
+        },
+        "mso-api-handlers/mso-api-handler-common": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 29,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 8,
+          "tests": 29
+        },
+        "mso-api-handlers/mso-api-handler-infra": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 712,
+          "skipped": 3,
+          "skipped_tests": [
+            "org.onap.so.apihandlerinfra.AAIDeserializeTest#doNotFailOnUnknownPropertiesTest",
+            "org.onap.so.apihandlerinfra.tenantisolation.CloudOrchestrationTest#testDeactivateDupCheck",
+            "org.onap.so.apihandlerinfra.tenantisolation.process.ActivateVnfStatusOperationalEnvironmentTest#callSDClientForRetryTest_202"
+          ],
+          "suites": 69,
+          "tests": 715
+        },
+        "mso-api-handlers/mso-requests-db": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 6,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 3,
+          "tests": 6
+        },
+        "mso-api-handlers/mso-requests-db-repositories": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 16,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 5,
+          "tests": 16
+        },
+        "mso-catalog-db": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 153,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 30,
+          "tests": 153
+        },
+        "so-optimization-clients": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 38,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 4,
+          "tests": 38
+        },
+        "so-sdn-clients": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 22,
+          "skipped": 1,
+          "skipped_tests": [
+            "org.onap.so.client.sdno.SDNOValidatorIT#run"
+          ],
+          "suites": 6,
+          "tests": 23
+        },
+        "so-simulator": {
+          "errors": 0,
+          "failed_tests": [],
+          "failures": 0,
+          "passed": 1,
+          "skipped": 0,
+          "skipped_tests": [],
+          "suites": 1,
+          "tests": 1
+        }
+      },
+      "reactor": {
+        "failed_modules": [],
+        "skipped_modules": [],
+        "success_modules": 42
+      },
+      "status": "ok",
+      "totals": {
+        "errors": 0,
+        "failures": 0,
+        "modules_with_tests": 31,
+        "passed": 4561,
+        "skipped": 76,
+        "tests": 4637
+      }
+    }
+  },
+  "schema_version": 1
+}
